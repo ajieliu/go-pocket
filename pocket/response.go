@@ -1,4 +1,4 @@
-package fasthttp
+package pocket
 
 import (
 	"encoding/json"
@@ -18,7 +18,7 @@ func NewResponse(code int, data interface{}) *Response {
 	}
 }
 
-func (r *Response) Response(ctx *fasthttp.RequestCtx) {
+func (r *Response) ResponseWithFastHttpCtx(ctx *fasthttp.RequestCtx) {
 	ctx.SetStatusCode(r.Code)
 	if r.Data == nil {
 		return

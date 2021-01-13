@@ -1,6 +1,8 @@
-package fasthttp
+package pocket
 
-import "github.com/valyala/fasthttp"
+import (
+	"net/http"
+)
 
 type ServiceError struct {
 	Code    int
@@ -19,11 +21,11 @@ func NewServiceError(code int, msg string) *ServiceError {
 }
 
 func BadRequestErr(msg string) *ServiceError {
-	return NewServiceError(fasthttp.StatusBadRequest, msg)
+	return NewServiceError(http.StatusBadRequest, msg)
 }
 
 func InternalServiceErr(msg string) *ServiceError {
-	return NewServiceError(fasthttp.StatusInternalServerError, msg)
+	return NewServiceError(http.StatusInternalServerError, msg)
 }
 
 type ErrorResponse struct {
@@ -35,5 +37,6 @@ func NewResponseFromError(e error) *Response {
 	if !ok {
 		err = InternalServiceErr(e.Error())
 	}
+
 	return NewResponse(err.Code, ErrorResponse{Message: err.Message})
 }
