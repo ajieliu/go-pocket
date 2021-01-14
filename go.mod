@@ -1,4 +1,4 @@
-module github.com/ajieliu/gopocket
+module github.com/ajieliu/go-pocket
 
 go 1.15
 
