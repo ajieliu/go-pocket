@@ -1,5 +1,5 @@
 
-# gopocket
+# go-pocket
 
-Here have some tools of Go
+go-pocket include some tools of go language.
 
